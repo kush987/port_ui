@@ -10,7 +10,7 @@ export function SiteFooter() {
           © {year} {portfolio.profile.name}
         </p>
         <p className="font-mono text-xs text-muted-foreground">
-          Built with Next.js + shadcn/ui · Edit{" "}
+          Built with Next.js · Edit{" "}
           <code className="text-foreground/80">src/content/portfolio.ts</code>
         </p>
       </div>
