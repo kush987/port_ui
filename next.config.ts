@@ -1,13 +1,21 @@
 import type { NextConfig } from "next";
 
-const repoName = "port_ui"
+const repoName = "port_ui";
+const isGithubPages = process.env.GITHUB_PAGES === "true";
+const basePath = isGithubPages ? `/${repoName}` : "";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   output: "export",
   images: { unoptimized: true },
-  distDir: `out/${repoName}`,
-  assetPrefix: `/${repoName}/`,
+  ...(isGithubPages
+    ? {
+        basePath,
+        assetPrefix: `${basePath}/`,
+      }
+    : {}),
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default nextConfig;

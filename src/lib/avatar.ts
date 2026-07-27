@@ -1,8 +1,10 @@
+import { withBasePath } from "@/lib/paths";
+
 export const DEFAULT_ANIME_AVATAR = "/avatars/default-anime.svg";
 
 export function resolveAvatarSrc(avatarUrl: string): string {
   const trimmed = avatarUrl.trim();
-  return trimmed.length > 0 ? trimmed : DEFAULT_ANIME_AVATAR;
+  return withBasePath(trimmed.length > 0 ? trimmed : DEFAULT_ANIME_AVATAR);
 }
 
 export function getInitials(name: string): string {

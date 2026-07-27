@@ -13,12 +13,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { withBasePath } from "@/lib/paths";
 
 interface ResumeViewerProps {
   resumeUrl: string;
 }
 
 export function ResumeViewer({ resumeUrl }: ResumeViewerProps) {
+  const resolvedResumeUrl = withBasePath(resumeUrl);
   const downloadFileName = resumeUrl.split("/").pop() ?? "resume.pdf";
 
   return (
@@ -42,7 +44,7 @@ export function ResumeViewer({ resumeUrl }: ResumeViewerProps) {
 
         <div className="min-h-0 flex-1 bg-muted/30 p-3 sm:p-4">
           <iframe
-            src={resumeUrl}
+            src={resolvedResumeUrl}
             title="Resume"
             className="h-[70vh] w-full rounded-md border border-border/80 bg-background"
           />
@@ -53,7 +55,7 @@ export function ResumeViewer({ resumeUrl }: ResumeViewerProps) {
             <Button variant="outline">Close</Button>
           </DialogClose>
           <Button asChild>
-            <a href={resumeUrl} download={downloadFileName}>
+            <a href={resolvedResumeUrl} download={downloadFileName}>
               <DownloadIcon data-icon="inline-start" />
               Download resume
             </a>

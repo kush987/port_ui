@@ -2,7 +2,9 @@
 
 import { useSyncExternalStore } from "react";
 
-const VIDEO_SRC = "/video/Make_a_techincal_intro_video_o.mp4";
+import { withBasePath } from "@/lib/paths";
+
+const VIDEO_SRC = withBasePath("/video/Make_a_techincal_intro_video_o.mp4");
 
 function subscribeReducedMotion(onStoreChange: () => void): () => void {
   const media = window.matchMedia("(prefers-reduced-motion: reduce)");
